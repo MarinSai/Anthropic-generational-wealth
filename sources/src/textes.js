@@ -5,7 +5,7 @@
 export const textes = {
   fr: {
     titre: "Les fondateurs et employés d'Anthropic détiennent collectivement plus que le PIB de 57 pays",
-    chapo: "Suite à l'introduction en bourse de l'entreprise jeudi 19 novembre.",
+    chapo: "Après l'introduction en bourse de l'entreprise jeudi 19 novembre.",
     unite: 'Md$',
     gaucheTitre: "Fondateurs et employés d'Anthropic",
     gaucheSous: '7 cofondateurs et environ 5 300 employés · 433,4 Md$',

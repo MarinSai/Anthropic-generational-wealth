@@ -27,7 +27,9 @@
   function etiqueter(rects, petit) {
     return rects.map((r) => {
       const nom = r[langue];
-      const fill = `rgba(221,32,60,${(0.18 + 0.22 * (r.rang / 57)).toFixed(3)})`;
+      const t = r.rang / 57; // gris clair (petits pays) → gris moyen (plus gros)
+      const c = Math.round(238 - 34 * t);
+      const fill = `rgb(${c},${c},${c + 3})`;
       const min = petit ? 44 : 58;
       if (r.w <= min || r.h <= (petit ? 24 : 30)) return { ...r, lignes: null, fill };
       const fs = Math.max(9.5, Math.min(petit ? 11.5 : 13, r.w / 8));
