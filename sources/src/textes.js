@@ -29,7 +29,7 @@ export const textes = {
     fondateurs: '7 cofundadores',
     droiteTitre: 'Las 57 economías más pequeñas',
     droiteSous: 'PIB acumulado en 2026 · 423,5 mil M$, de Tuvalu a Macedonia del Norte',
-    nommes: (n, r) => `${n} países con nombre, otros ${r} demasiado pequeños para tenerlo`,
+    nommes: (n, r) => `${n} países señalados; ${r}, demasiado pequeños`,
     note: 'Nota: estimación del Grand Continent, que valora al precio de cierre del 19 de noviembre (97,17 dólares) las acciones de los siete cofundadores y las opciones (netas del precio de ejercicio medio de 2,91 dólares) y acciones gratuitas concedidas a los empleados, incluidas las no consolidadas. Las superficies son proporcionales a los importes y se comparan con el PIB previsto para 2026 por el FMI de las 57 economías más pequeñas miembros de la ONU.',
     source: 'Fuentes: folleto de salida a bolsa de Anthropic (S-1/A, 10 de noviembre de 2026), Bloomberg, FMI (World Economic Outlook, octubre de 2026) · Gráfico: El Grand Continent'
   },
