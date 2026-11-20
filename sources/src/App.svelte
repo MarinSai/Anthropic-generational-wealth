@@ -2,12 +2,25 @@
   import { textes, valeurs } from './textes.js';
   import pays from './pays57.json';
   import { squarify } from './squarify.js';
+  import { onMount } from 'svelte';
 
   const langue = import.meta.env.VITE_LANGUE || 'fr';
   const t = textes[langue];
   const fmt = (v) => v.toLocaleString(langue === 'fr' ? 'fr-FR' : langue, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
   let largeur = 0; // largeur d'une colonne
+  let colonne;
+  // Mesure par ResizeObserver (et non bind:clientWidth, qui insère une iframe cachée
+  // parfois bloquée selon le navigateur ou le contexte d'intégration).
+  onMount(() => {
+    const mesurer = () => { if (colonne) largeur = Math.round(colonne.getBoundingClientRect().width); };
+    mesurer();
+    let ro;
+    if ('ResizeObserver' in window) { ro = new ResizeObserver(mesurer); ro.observe(colonne); }
+    addEventListener('resize', mesurer);
+    if (document.fonts) document.fonts.ready.then(mesurer);
+    return () => { ro && ro.disconnect(); removeEventListener('resize', mesurer); };
+  });
   let ecran = 1040;
 
   $: empile = ecran <= 600;
@@ -55,7 +68,7 @@
   <p class="chapo">{t.chapo}</p>
 
   <div class="duo">
-    <div bind:clientWidth={largeur}>
+    <div bind:this={colonne}>
       <h3>{t.gaucheTitre}</h3>
       <p class="s">{t.gaucheSous}</p>
       {#if largeur}
