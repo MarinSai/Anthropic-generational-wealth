@@ -77,7 +77,7 @@
       <div class="seg" class:alt={s.i % 2} class:depasse={cumul[s.i + 1] > cible} style="left:{s.x}%;width:{s.w}%" title="{s[langue]} · {md(s.pib)}"></div>
     {/each}
     </div>
-    <div class="cible" style="left:{ligne}%"><span>{t.cibles[cibleId]}</span></div>
+    <div class="cible" class:visible={etat === 'trop'} style="left:{ligne}%"><span>{t.cibles[cibleId]}</span></div>
   </div>
 
   <label class="curseur">
@@ -130,7 +130,8 @@
   .seg { position: absolute; top: 0; bottom: 0; background: #c4c4c9; box-shadow: inset -1px 0 0 #fff; }
   .seg.alt { background: #adadb3; }
   .seg.depasse { background: repeating-linear-gradient(45deg, #dd203c 0 2px, #f7c9d1 2px 5px); }
-  .cible { position: absolute; top: -18px; bottom: -6px; border-left: 2px solid var(--rouge); }
+  .cible { position: absolute; top: -18px; bottom: -6px; border-left: 2px solid var(--rouge); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+  .cible.visible { opacity: 1; }
   .cible span { position: absolute; top: 0; right: 5px; white-space: nowrap; font-size: 11.5px; font-weight: 600; color: var(--rouge); line-height: 1; }
   .curseur { display: block; margin-top: 14px; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
