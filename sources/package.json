@@ -1,0 +1,14 @@
+{
+  "name": "anthropic-generational-wealth",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "VITE_LANGUE=fr vite build && VITE_LANGUE=es vite build && VITE_LANGUE=it vite build"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "svelte": "^4.2.20",
+    "vite": "^5.4.21",
+    "vite-plugin-singlefile": "^2.3.4"
+  }
+}

@@ -1,0 +1,458 @@
+[
+{
+"iso3": "TUV",
+"pib": 0.08,
+"rang": 1,
+"fr": "Tuvalu",
+"es": "Tuvalu",
+"it": "Tuvalu"
+},
+{
+"iso3": "NRU",
+"pib": 0.2,
+"rang": 2,
+"fr": "Nauru",
+"es": "Nauru",
+"it": "Nauru"
+},
+{
+"iso3": "MHL",
+"pib": 0.34,
+"rang": 3,
+"fr": "Îles Marshall",
+"es": "Islas Marshall",
+"it": "Isole Marshall"
+},
+{
+"iso3": "PLW",
+"pib": 0.37,
+"rang": 4,
+"fr": "Palaos",
+"es": "Palaos",
+"it": "Palau"
+},
+{
+"iso3": "KIR",
+"pib": 0.4,
+"rang": 5,
+"fr": "Kiribati",
+"es": "Kiribati",
+"it": "Kiribati"
+},
+{
+"iso3": "FSM",
+"pib": 0.53,
+"rang": 6,
+"fr": "Micronésie",
+"es": "Micronesia",
+"it": "Micronesia"
+},
+{
+"iso3": "TON",
+"pib": 0.73,
+"rang": 7,
+"fr": "Tonga",
+"es": "Tonga",
+"it": "Tonga"
+},
+{
+"iso3": "DMA",
+"pib": 0.79,
+"rang": 8,
+"fr": "Dominique",
+"es": "Dominica",
+"it": "Dominica"
+},
+{
+"iso3": "STP",
+"pib": 1.12,
+"rang": 9,
+"fr": "Sao Tomé-et-Principe",
+"es": "Santo Tomé y Príncipe",
+"it": "São Tomé e Príncipe"
+},
+{
+"iso3": "KNA",
+"pib": 1.15,
+"rang": 10,
+"fr": "Saint-Christophe-et-Niévès",
+"es": "San Cristóbal y Nieves",
+"it": "Saint Kitts e Nevis"
+},
+{
+"iso3": "VCT",
+"pib": 1.27,
+"rang": 11,
+"fr": "Saint-Vincent-et-les-Grenadines",
+"es": "San Vicente y las Granadinas",
+"it": "Saint Vincent e Grenadine"
+},
+{
+"iso3": "WSM",
+"pib": 1.35,
+"rang": 12,
+"fr": "Samoa",
+"es": "Samoa",
+"it": "Samoa"
+},
+{
+"iso3": "VUT",
+"pib": 1.39,
+"rang": 13,
+"fr": "Vanuatu",
+"es": "Vanuatu",
+"it": "Vanuatu"
+},
+{
+"iso3": "GRD",
+"pib": 1.55,
+"rang": 14,
+"fr": "Grenade",
+"es": "Granada",
+"it": "Grenada"
+},
+{
+"iso3": "COM",
+"pib": 1.73,
+"rang": 15,
+"fr": "Comores",
+"es": "Comoras",
+"it": "Comore"
+},
+{
+"iso3": "SLB",
+"pib": 1.87,
+"rang": 16,
+"fr": "Îles Salomon",
+"es": "Islas Salomón",
+"it": "Isole Salomone"
+},
+{
+"iso3": "TLS",
+"pib": 2.17,
+"rang": 17,
+"fr": "Timor oriental",
+"es": "Timor Oriental",
+"it": "Timor Est"
+},
+{
+"iso3": "SYC",
+"pib": 2.37,
+"rang": 18,
+"fr": "Seychelles",
+"es": "Seychelles",
+"it": "Seychelles"
+},
+{
+"iso3": "ATG",
+"pib": 2.39,
+"rang": 19,
+"fr": "Antigua-et-Barbuda",
+"es": "Antigua y Barbuda",
+"it": "Antigua e Barbuda"
+},
+{
+"iso3": "SMR",
+"pib": 2.43,
+"rang": 20,
+"fr": "Saint-Marin",
+"es": "San Marino",
+"it": "San Marino"
+},
+{
+"iso3": "LCA",
+"pib": 2.76,
+"rang": 21,
+"fr": "Sainte-Lucie",
+"es": "Santa Lucía",
+"it": "Saint Lucia"
+},
+{
+"iso3": "GNB",
+"pib": 2.94,
+"rang": 22,
+"fr": "Guinée-Bissau",
+"es": "Guinea-Bisáu",
+"it": "Guinea-Bissau"
+},
+{
+"iso3": "GMB",
+"pib": 3.02,
+"rang": 23,
+"fr": "Gambie",
+"es": "Gambia",
+"it": "Gambia"
+},
+{
+"iso3": "LSO",
+"pib": 3.1,
+"rang": 24,
+"fr": "Lesotho",
+"es": "Lesoto",
+"it": "Lesotho"
+},
+{
+"iso3": "CPV",
+"pib": 3.39,
+"rang": 25,
+"fr": "Cap-Vert",
+"es": "Cabo Verde",
+"it": "Capo Verde"
+},
+{
+"iso3": "BLZ",
+"pib": 3.44,
+"rang": 26,
+"fr": "Belize",
+"es": "Belice",
+"it": "Belize"
+},
+{
+"iso3": "BTN",
+"pib": 3.91,
+"rang": 27,
+"fr": "Bhoutan",
+"es": "Bután",
+"it": "Bhutan"
+},
+{
+"iso3": "DJI",
+"pib": 4.87,
+"rang": 28,
+"fr": "Djibouti",
+"es": "Yibuti",
+"it": "Gibuti"
+},
+{
+"iso3": "AND",
+"pib": 4.92,
+"rang": 29,
+"fr": "Andorre",
+"es": "Andorra",
+"it": "Andorra"
+},
+{
+"iso3": "CAF",
+"pib": 5.08,
+"rang": 30,
+"fr": "Centrafrique",
+"es": "República Centroafricana",
+"it": "Repubblica Centrafricana"
+},
+{
+"iso3": "LBR",
+"pib": 5.71,
+"rang": 31,
+"fr": "Liberia",
+"es": "Liberia",
+"it": "Liberia"
+},
+{
+"iso3": "SUR",
+"pib": 5.98,
+"rang": 32,
+"fr": "Suriname",
+"es": "Surinam",
+"it": "Suriname"
+},
+{
+"iso3": "SWZ",
+"pib": 6.05,
+"rang": 33,
+"fr": "Eswatini",
+"es": "Esuatini",
+"it": "Eswatini"
+},
+{
+"iso3": "FJI",
+"pib": 6.57,
+"rang": 34,
+"fr": "Fidji",
+"es": "Fiyi",
+"it": "Figi"
+},
+{
+"iso3": "BDI",
+"pib": 7.61,
+"rang": 35,
+"fr": "Burundi",
+"es": "Burundi",
+"it": "Burundi"
+},
+{
+"iso3": "SSD",
+"pib": 7.98,
+"rang": 36,
+"fr": "Soudan du Sud",
+"es": "Sudán del Sur",
+"it": "Sudan del Sud"
+},
+{
+"iso3": "MDV",
+"pib": 8.15,
+"rang": 37,
+"fr": "Maldives",
+"es": "Maldivas",
+"it": "Maldive"
+},
+{
+"iso3": "BRB",
+"pib": 8.26,
+"rang": 38,
+"fr": "Barbade",
+"es": "Barbados",
+"it": "Barbados"
+},
+{
+"iso3": "SLE",
+"pib": 8.52,
+"rang": 39,
+"fr": "Sierra Leone",
+"es": "Sierra Leona",
+"it": "Sierra Leone"
+},
+{
+"iso3": "LIE",
+"pib": 9.59,
+"rang": 40,
+"fr": "Liechtenstein",
+"es": "Liechtenstein",
+"it": "Liechtenstein"
+},
+{
+"iso3": "MNE",
+"pib": 10.12,
+"rang": 41,
+"fr": "Monténégro",
+"es": "Montenegro",
+"it": "Montenegro"
+},
+{
+"iso3": "YEM",
+"pib": 10.98,
+"rang": 42,
+"fr": "Yémen",
+"es": "Yemen",
+"it": "Yemen"
+},
+{
+"iso3": "TGO",
+"pib": 13.14,
+"rang": 43,
+"fr": "Togo",
+"es": "Togo",
+"it": "Togo"
+},
+{
+"iso3": "MRT",
+"pib": 14.26,
+"rang": 44,
+"fr": "Mauritanie",
+"es": "Mauritania",
+"it": "Mauritania"
+},
+{
+"iso3": "GNQ",
+"pib": 14.28,
+"rang": 45,
+"fr": "Guinée équatoriale",
+"es": "Guinea Ecuatorial",
+"it": "Guinea equatoriale"
+},
+{
+"iso3": "SOM",
+"pib": 14.82,
+"rang": 46,
+"fr": "Somalie",
+"es": "Somalia",
+"it": "Somalia"
+},
+{
+"iso3": "MUS",
+"pib": 16.94,
+"rang": 47,
+"fr": "Maurice",
+"es": "Mauricio",
+"it": "Mauritius"
+},
+{
+"iso3": "NAM",
+"pib": 17.94,
+"rang": 48,
+"fr": "Namibie",
+"es": "Namibia",
+"it": "Namibia"
+},
+{
+"iso3": "BHS",
+"pib": 18.28,
+"rang": 49,
+"fr": "Bahamas",
+"es": "Bahamas",
+"it": "Bahamas"
+},
+{
+"iso3": "MWI",
+"pib": 18.31,
+"rang": 50,
+"fr": "Malawi",
+"es": "Malaui",
+"it": "Malawi"
+},
+{
+"iso3": "LAO",
+"pib": 18.39,
+"rang": 51,
+"fr": "Laos",
+"es": "Laos",
+"it": "Laos"
+},
+{
+"iso3": "RWA",
+"pib": 18.67,
+"rang": 52,
+"fr": "Rwanda",
+"es": "Ruanda",
+"it": "Ruanda"
+},
+{
+"iso3": "BRN",
+"pib": 18.87,
+"rang": 53,
+"fr": "Brunei",
+"es": "Brunéi",
+"it": "Brunei"
+},
+{
+"iso3": "COG",
+"pib": 19.12,
+"rang": 54,
+"fr": "Congo",
+"es": "Congo",
+"it": "Congo"
+},
+{
+"iso3": "MDG",
+"pib": 20.98,
+"rang": 55,
+"fr": "Madagascar",
+"es": "Madagascar",
+"it": "Madagascar"
+},
+{
+"iso3": "TJK",
+"pib": 21.11,
+"rang": 56,
+"fr": "Tadjikistan",
+"es": "Tayikistán",
+"it": "Tagikistan"
+},
+{
+"iso3": "MKD",
+"pib": 21.24,
+"rang": 57,
+"fr": "Macédoine du Nord",
+"es": "Macedonia del Norte",
+"it": "Macedonia del Nord"
+}
+]

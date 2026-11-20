@@ -1,0 +1,186 @@
+iso3,pays,pib_2026_md_usd,rang_depuis_le_bas,cumul_md_usd,dans_le_total_anthropic
+TUV,Tuvalu,0.08,1,0.08,oui
+NRU,Nauru,0.2,2,0.28,oui
+MHL,Marshall Islands,0.34,3,0.62,oui
+PLW,Palau,0.37,4,0.99,oui
+KIR,Kiribati,0.4,5,1.39,oui
+FSM,"Micronesia, Federated States of",0.53,6,1.92,oui
+TON,Tonga,0.73,7,2.65,oui
+DMA,Dominica,0.79,8,3.44,oui
+STP,Sao Tome and Principe,1.12,9,4.56,oui
+KNA,Saint Kitts and Nevis,1.15,10,5.71,oui
+VCT,Saint Vincent and the Grenadines,1.27,11,6.98,oui
+WSM,Samoa,1.35,12,8.32,oui
+VUT,Vanuatu,1.39,13,9.71,oui
+GRD,Grenada,1.55,14,11.26,oui
+COM,Comoros,1.73,15,12.99,oui
+SLB,Solomon Islands,1.87,16,14.86,oui
+TLS,Timor-Leste,2.17,17,17.03,oui
+SYC,Seychelles,2.37,18,19.39,oui
+ATG,Antigua and Barbuda,2.39,19,21.78,oui
+SMR,San Marino,2.43,20,24.22,oui
+LCA,Saint Lucia,2.76,21,26.98,oui
+GNB,Guinea-Bissau,2.94,22,29.92,oui
+GMB,Gambia,3.02,23,32.94,oui
+LSO,Lesotho,3.1,24,36.04,oui
+CPV,Cabo Verde,3.39,25,39.43,oui
+BLZ,Belize,3.44,26,42.87,oui
+BTN,Bhutan,3.91,27,46.78,oui
+DJI,Djibouti,4.87,28,51.65,oui
+AND,Andorra,4.92,29,56.57,oui
+CAF,Central African Republic,5.08,30,61.65,oui
+LBR,Liberia,5.71,31,67.36,oui
+SUR,Suriname,5.98,32,73.34,oui
+SWZ,Eswatini,6.05,33,79.4,oui
+FJI,Fiji,6.57,34,85.97,oui
+BDI,Burundi,7.61,35,93.57,oui
+SSD,South Sudan,7.98,36,101.56,oui
+MDV,Maldives,8.15,37,109.7,oui
+BRB,Barbados,8.26,38,117.96,oui
+SLE,Sierra Leone,8.52,39,126.48,oui
+LIE,Liechtenstein,9.59,40,136.07,oui
+MNE,Montenegro,10.12,41,146.2,oui
+YEM,Yemen,10.98,42,157.18,oui
+TGO,Togo,13.14,43,170.32,oui
+MRT,Mauritania,14.26,44,184.58,oui
+GNQ,Equatorial Guinea,14.28,45,198.86,oui
+SOM,Somalia,14.82,46,213.68,oui
+MUS,Mauritius,16.94,47,230.63,oui
+NAM,Namibia,17.94,48,248.57,oui
+BHS,Bahamas,18.28,49,266.84,oui
+MWI,Malawi,18.31,50,285.15,oui
+LAO,Lao People's Democratic Republic,18.39,51,303.54,oui
+RWA,Rwanda,18.67,52,322.21,oui
+BRN,Brunei Darussalam,18.87,53,341.09,oui
+COG,Congo,19.12,54,360.2,oui
+MDG,Madagascar,20.98,55,381.18,oui
+TJK,Tajikistan,21.11,56,402.29,oui
+MKD,North Macedonia,21.24,57,423.53,oui
+BWA,Botswana,22.13,58,445.65,non
+MDA,"Moldova, Republic of",22.22,59,467.87,non
+NER,Niger,23.37,60,491.24,non
+JAM,Jamaica,23.91,61,515.15,non
+MOZ,Mozambique,24.77,62,539.92,non
+TCD,Chad,25.24,63,565.15,non
+NIC,Nicaragua,25.4,64,590.56,non
+GAB,Gabon,25.99,65,616.55,non
+KGZ,Kyrgyzstan,26.69,66,643.24,non
+TTO,Trinidad and Tobago,26.82,67,670.06,non
+BEN,Benin,27.41,68,697.47,non
+MLT,Malta,30.51,69,727.97,non
+SDN,Sudan,30.86,70,758.84,non
+MNG,Mongolia,31.13,71,789.97,non
+BFA,Burkina Faso,32.41,72,822.38,non
+ALB,Albania,32.77,73,855.14,non
+ARM,Armenia,32.97,74,888.12,non
+MLI,Mali,34.91,75,923.03,non
+PNG,Papua New Guinea,36.3,76,959.32,non
+BIH,Bosnia and Herzegovina,37.26,77,996.59,non
+SLV,El Salvador,39.38,78,1035.97,non
+HTI,Haiti,39.39,79,1075.35,non
+GUY,Guyana,40.34,80,1115.7,non
+HND,Honduras,40.97,81,1156.66,non
+ZMB,Zambia,42.38,82,1199.05,non
+ISL,Iceland,42.77,83,1241.82,non
+GEO,Georgia,44.11,84,1285.93,non
+CYP,Cyprus,44.29,85,1330.22,non
+GIN,Guinea,45.31,86,1375.53,non
+NPL,Nepal,45.59,87,1421.12,non
+BHR,Bahrain,46.02,88,1467.14,non
+EST,Estonia,51.03,89,1518.17,non
+LVA,Latvia,53.16,90,1571.33,non
+BOL,"Bolivia, Plurinational State of",53.84,91,1625.17,non
+KHM,Cambodia,54.18,92,1679.35,non
+LBY,Libya,56.95,93,1736.3,non
+TUN,Tunisia,62.74,94,1799.04,non
+PRY,Paraguay,64.0,95,1863.04,non
+CMR,Cameroon,64.81,96,1927.85,non
+JOR,Jordan,64.88,97,1992.73,non
+ZWE,Zimbabwe,65.92,98,2058.65,non
+UGA,Uganda,72.24,99,2130.89,non
+TKM,Turkmenistan,83.0,100,2213.89,non
+MMR,Myanmar,83.17,101,2297.06,non
+SVN,Slovenia,88.87,102,2385.93,non
+AZE,Azerbaijan,89.18,103,2475.11,non
+URY,Uruguay,95.16,104,2570.27,non
+TZA,"Tanzania, United Republic of",96.18,105,2666.45,non
+PAN,Panama,96.47,106,2762.92,non
+LTU,Lithuania,104.72,107,2867.64,non
+BLR,Belarus,108.11,108,2975.75,non
+LUX,Luxembourg,108.33,109,3084.08,non
+CIV,Côte d'Ivoire,110.45,110,3194.53,non
+LKA,Sri Lanka,110.68,111,3305.21,non
+SRB,Serbia,111.2,112,3416.41,non
+CRI,Costa Rica,115.25,113,3531.66,non
+HRV,Croatia,115.92,114,3647.58,non
+OMN,Oman,121.4,115,3768.97,non
+COD,"Congo, The Democratic Republic of the",122.28,116,3891.26,non
+VEN,"Venezuela, Bolivarian Republic of",124.18,117,4015.44,non
+ETH,Ethiopia,127.15,118,4142.58,non
+GHA,Ghana,128.64,119,4271.22,non
+GTM,Guatemala,132.27,120,4403.49,non
+ECU,Ecuador,138.2,121,4541.69,non
+DOM,Dominican Republic,145.36,122,4687.05,non
+BGR,Bulgaria,146.51,123,4833.56,non
+KWT,Kuwait,146.91,124,4980.47,non
+KEN,Kenya,151.15,125,5131.62,non
+AGO,Angola,157.3,126,5288.92,non
+SVK,Slovakia,167.06,127,5455.98,non
+UZB,Uzbekistan,178.17,128,5634.15,non
+MAR,Morocco,195.63,129,5829.78,non
+QAT,Qatar,203.04,130,6032.82,non
+UKR,Ukraine,229.41,131,6262.23,non
+IRQ,Iraq,245.23,132,6507.46,non
+HUN,Hungary,265.91,133,6773.38,non
+NZL,New Zealand,273.4,134,7046.77,non
+GRC,Greece,304.63,135,7351.4,non
+IRN,"Iran, Islamic Republic of",311.95,136,7663.35,non
+DZA,Algeria,331.89,137,7995.24,non
+FIN,Finland,338.56,138,8333.81,non
+PRT,Portugal,375.2,139,8709.0,non
+NGA,Nigeria,386.67,140,9095.67,non
+KAZ,Kazakhstan,397.92,141,9493.59,non
+PER,Peru,399.59,142,9893.19,non
+CHL,Chile,402.24,143,10295.43,non
+CZE,Czechia,427.95,144,10723.38,non
+EGY,Egypt,442.89,145,11166.27,non
+PAK,Pakistan,450.13,146,11616.4,non
+ROU,Romania,470.09,147,12086.49,non
+ZAF,South Africa,489.08,148,12575.58,non
+DNK,Denmark,499.35,149,13074.93,non
+PHL,Philippines,501.69,150,13576.62,non
+BGD,Bangladesh,506.36,151,14082.98,non
+VNM,Viet Nam,542.13,152,14625.11,non
+MYS,Malaysia,547.1,153,15172.21,non
+COL,Colombia,572.73,154,15744.95,non
+THA,Thailand,599.12,155,16344.06,non
+AUT,Austria,616.9,156,16960.96,non
+NOR,Norway,651.71,157,17612.67,non
+ARE,United Arab Emirates,661.02,158,18273.69,non
+SGP,Singapore,667.89,159,18941.58,non
+IRL,Ireland,709.97,160,19651.55,non
+SWE,Sweden,745.08,161,20396.63,non
+ISR,Israel,746.98,162,21143.61,non
+ARG,Argentina,768.21,163,21911.82,non
+BEL,Belgium,772.7,164,22684.52,non
+POL,Poland,1133.09,165,23817.61,non
+CHE,Switzerland,1135.74,166,24953.34,non
+SAU,Saudi Arabia,1343.35,167,26296.69,non
+NLD,Netherlands,1423.86,168,27720.55,non
+IDN,Indonesia,1479.95,169,29200.5,non
+TUR,Türkiye,1817.99,170,31018.49,non
+ESP,Spain,2085.28,171,33103.76,non
+AUS,Australia,2110.66,172,35214.42,non
+MEX,Mexico,2176.24,173,37390.66,non
+KOR,"Korea, Republic of",2245.85,174,39636.5,non
+CAN,Canada,2490.26,175,42126.76,non
+BRA,Brazil,2654.76,176,44781.52,non
+ITA,Italy,2701.74,177,47483.26,non
+RUS,Russian Federation,2861.16,178,50344.41,non
+FRA,France,3554.15,179,53898.57,non
+IND,India,4060.21,180,57958.77,non
+GBR,United Kingdom,4268.45,181,62227.22,non
+JPN,Japan,4341.99,182,66569.21,non
+DEU,Germany,5471.3,183,72040.5,non
+CHN,China,21546.4,184,93586.91,non
+USA,United States,32642.37,185,126229.28,non
