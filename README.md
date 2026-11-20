@@ -20,4 +20,4 @@ Sorties : `dist-fr/`, `dist-es/`, `dist-it/` (Svelte 4, Vite, vite-plugin-single
 
 ## Simulateur
 
-`simulateur/index.html` (FR), `simulateur/es.html`, `simulateur/it.html` : le lecteur remplit une jauge avec le PIB 2026 de pays (185 membres de l'ONU couverts par le FMI) sans dépasser la valeur des parts des fondateurs et employés (433,4 Md$), des sept cofondateurs (162,6), des employés (270,8) ou d'un cofondateur en moyenne (23,2). Maximum possible : 57, 42, 49 et 19 pays. Sources dans `simulateur/sources/` (`npm install && npm run build`).
+`simulateur/index.html` (FR), `simulateur/es.html`, `simulateur/it.html` : un curseur additionne le PIB 2026 des plus petites économies (membres de l'ONU couverts par le FMI), de la plus petite à la plus grande, jusqu'à la valeur des parts des fondateurs et employés (433,4 Md$), des sept cofondateurs (162,6), des employés (270,8) ou d'un cofondateur en moyenne (23,2). Réponses : 57, 42, 49 et 19 pays. Sources dans `simulateur/sources/` (`npm install && npm run build`).

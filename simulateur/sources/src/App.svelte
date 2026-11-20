@@ -8,93 +8,50 @@
   const loc = langue === 'fr' ? 'fr-FR' : langue;
   const fmt = (v) => v.toLocaleString(loc, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const md = (v) => `${fmt(v)} ${t.unite}`;
-  const sansAccent = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const sep = langue === 'fr' ? ' : ' : ': ';
 
+  // pays du plus petit au plus grand PIB, avec le cumul
   const pays = [...tous].sort((a, b) => a.pib - b.pib);
+  const cumul = [0];
+  pays.forEach((p, i) => cumul.push(cumul[i] + p.pib));
+  const maxPour = (v) => cumul.findIndex((c) => c > v) - 1; // pays maximum sans dépasser
 
   let cibleId = 'tot';
-  let choisis = []; // iso3 dans l'ordre d'ajout
-  let recherche = '';
-  let message = t.debut;
-  let secoue = null;
-  let minuteur = null;
+  let n = 10;
+  let anim = null;
 
   $: cible = cibles.find((c) => c.id === cibleId).v;
-  $: pris = new Set(choisis);
-  $: total = choisis.reduce((s, i) => s + pays.find((p) => p.iso3 === i).pib, 0);
-  $: reste = Math.max(0, cible - total);
-  $: max = maximum(cible);
-  $: candidats = pays.filter((p) => !pris.has(p.iso3) && p.pib <= reste + 1e-9);
-  $: fini = choisis.length > 0 && candidats.length === 0;
-  $: unSeul = [...pays].reverse().find((p) => p.pib <= cible);
-  $: liste = recherche ? pays.filter((p) => sansAccent(p[langue]).includes(sansAccent(recherche))) : pays;
-  $: if (fini && !minuteur) message = choisis.length === max ? t.record(max) : t.fini(choisis.length, max);
-  $: segments = (() => {
-    let x = 0;
-    return choisis.map((i, k) => {
-      const p = pays.find((q) => q.iso3 === i);
-      const s = { ...p, x: (x / cible) * 100, w: (p.pib / cible) * 100, k };
-      x += p.pib;
-      return s;
-    });
-  })();
+  $: max = maxPour(cible);
+  $: borne = Math.min(pays.length, Math.round(max * 1.6) + 2);
+  $: echelle = cible * 1.5; // la cible occupe les deux tiers de la jauge
+  $: somme = cumul[n];
+  $: etat = n < max ? 'encore' : n === max ? 'juste' : 'trop';
+  $: dernier = n > 0 ? pays[n - 1] : null;
+  $: segments = pays.slice(0, n).map((p, i) => ({ ...p, x: (cumul[i] / echelle) * 100, w: (p.pib / echelle) * 100, i }));
+  $: ligne = (cible / echelle) * 100;
+  $: remplissage = (n / borne) * 100;
 
-  function maximum(c) {
-    let s = 0, n = 0;
-    for (const p of pays) { if (s + p.pib > c) break; s += p.pib; n++; }
-    return n;
+  function changerCible(id) {
+    stop();
+    cibleId = id;
+    n = Math.max(1, Math.round(maxPour(cibles.find((c) => c.id === id).v) / 5));
   }
 
-  function basculer(p) {
-    if (minuteur) return;
-    if (pris.has(p.iso3)) {
-      choisis = choisis.filter((i) => i !== p.iso3);
-      message = t.retire(p[langue]);
-    } else if (p.pib <= reste + 1e-9) {
-      choisis = [...choisis, p.iso3];
-      message = t.ajoute(p[langue], md(p.pib));
-    } else {
-      message = t.tropGros(p[langue], md(p.pib), md(reste));
-      secoue = p.iso3;
-      setTimeout(() => (secoue = null), 400);
-    }
+  function stop() { if (anim) { cancelAnimationFrame(anim); anim = null; } }
+
+  function voirReponse() {
+    stop();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { n = max; return; }
+    const depart = n, d0 = performance.now(), duree = Math.min(1600, 40 * Math.abs(max - depart) + 300);
+    const pas = (now) => {
+      const k = Math.min(1, (now - d0) / duree);
+      n = Math.round(depart + (max - depart) * (1 - Math.pow(1 - k, 3)));
+      anim = k < 1 ? requestAnimationFrame(pas) : null;
+    };
+    anim = requestAnimationFrame(pas);
   }
 
-  function hasard() {
-    if (minuteur || !candidats.length) return;
-    basculer(candidats[Math.floor(Math.random() * candidats.length)]);
-  }
-
-  function somme(liste) { return liste.reduce((s, i) => s + pays.find((p) => p.iso3 === i).pib, 0); }
-  function prochain() {
-    const deja = new Set(choisis);
-    const r = cible - somme(choisis);
-    return pays.find((p) => !deja.has(p.iso3) && p.pib <= r + 1e-9);
-  }
-
-  function remplir() {
-    if (minuteur) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      let p;
-      while ((p = prochain())) choisis = [...choisis, p.iso3];
-      return;
-    }
-    minuteur = setInterval(() => {
-      const p = prochain();
-      if (!p) { clearInterval(minuteur); minuteur = null; return; }
-      choisis = [...choisis, p.iso3];
-      message = t.ajoute(p[langue], md(p.pib));
-    }, 70);
-  }
-
-  function recommencer() {
-    clearInterval(minuteur); minuteur = null;
-    choisis = []; recherche = ''; message = t.debut;
-  }
-
-  function changerCible(id) { cibleId = id; recommencer(); }
-
-  onDestroy(() => clearInterval(minuteur));
+  onDestroy(stop);
 </script>
 
 <section class="bloc">
@@ -110,42 +67,39 @@
   </div>
 
   <div class="score">
-    <span class="n">{t.pays(choisis.length)}</span>
-    <span class="detail">{md(total)} / {md(cible)} · {t.reste(md(reste))}</span>
+    <span class="n" class:ok={etat === 'juste'} class:ko={etat === 'trop'}>{t.pays(n)}</span>
+    <span class="detail">{t.pibCumule}{sep}<b>{md(somme)}</b> / {md(cible)}</span>
   </div>
 
-  <div class="jauge" class:pleine={fini}>
+  <div class="jauge">
+    <div class="remplie">
     {#each segments as s (s.iso3)}
-      <div class="seg" class:alt={s.k % 2} style="left:{s.x}%;width:{s.w}%" title="{s[langue]} · {md(s.pib)}"></div>
+      <div class="seg" class:alt={s.i % 2} class:depasse={cumul[s.i + 1] > cible} style="left:{s.x}%;width:{s.w}%" title="{s[langue]} · {md(s.pib)}"></div>
     {/each}
+    </div>
+    <div class="cible" style="left:{ligne}%"><span>{t.cibles[cibleId]}</span></div>
   </div>
-  <p class="un-seul">{t.unSeul(unSeul[langue], md(unSeul.pib))}</p>
 
-  <p class="message" class:fin={fini} aria-live="polite">{message}</p>
+  <label class="curseur">
+    <span class="sr">{t.curseur}</span>
+    <input type="range" min="0" max={borne} step="1" bind:value={n} on:input={stop} style="--p:{remplissage}%" aria-valuetext={t.pays(n)} />
+  </label>
+  <div class="bornes"><span>0</span><span>{borne}</span></div>
 
-  <div class="outils">
-    <input type="search" placeholder={t.chercher} bind:value={recherche} aria-label={t.chercher} />
-    <button on:click={hasard} disabled={!!minuteur || !candidats.length}>{t.hasard}</button>
-    <button on:click={remplir} disabled={!!minuteur || !candidats.length}>{t.remplir}</button>
-    <button class="sobre" on:click={recommencer}>{t.recommencer}</button>
+  <p class="message {etat}" aria-live="polite">
+    {#if etat === 'encore'}{t.encore(md(cible - somme))}
+    {:else if etat === 'juste'}{t.juste(max)}
+    {:else}{t.trop(pays[max][langue], md(somme - cible), max + 1)}{/if}
+  </p>
+  <p class="dernier">{dernier ? t.dernier(dernier[langue], md(dernier.pib)) : t.aucun}</p>
+
+  <div class="actions">
+    <button on:click={voirReponse} disabled={n === max}>{t.reponse}</button>
   </div>
-  <p class="legende">{t.legende}</p>
 
-  <div class="puces">
-    {#each liste as p (p.iso3)}
-      <button
-        class="puce"
-        class:pris={pris.has(p.iso3)}
-        class:trop={!pris.has(p.iso3) && p.pib > reste + 1e-9}
-        class:secoue={secoue === p.iso3}
-        on:click={() => basculer(p)}
-      >
-        <span class="nom">{p[langue]}</span><span class="val">{fmt(p.pib)}</span>
-      </button>
-    {:else}
-      <p class="vide">{t.aucun}</p>
-    {/each}
-  </div>
+  {#if n > 0}
+    <p class="liste"><span>{t.liste}{sep.trimEnd()}</span> {pays.slice(0, n).map((p) => p[langue]).join(', ')}.</p>
+  {/if}
 
   <div class="source">{t.note}<br />{t.source}</div>
 </section>
@@ -159,43 +113,47 @@
   h1 { font-family: 'Sanomat', Georgia, serif; font-weight: 700; font-size: clamp(21px, 3.2vw, 28px); line-height: 1.12; margin: 0 0 8px; text-wrap: balance; }
   .chapo { font-size: 15px; line-height: 1.42; color: var(--gris); margin: 0 0 14px; max-width: 760px; }
   button { font: inherit; color: inherit; cursor: pointer; }
-  .cibles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
+  .cibles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
   .cibles button { border: 1px solid var(--filet); background: #fff; border-radius: 3px; padding: 7px 10px; text-align: left; line-height: 1.25; }
   .cibles b { display: block; font-family: 'Sanomat', Georgia, serif; font-size: 14.5px; }
   .cibles small { color: var(--gris); font-size: 12px; }
   .cibles button[aria-pressed='true'] { border-color: var(--rouge); box-shadow: inset 0 0 0 1px var(--rouge); }
   .cibles button[aria-pressed='true'] b { color: var(--rouge); }
-  .score { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px; }
-  .n { font-family: 'Sanomat', Georgia, serif; font-weight: 700; font-size: 26px; color: var(--rouge); white-space: nowrap; }
-  .detail { font-size: 13px; color: var(--gris); }
-  .jauge { position: relative; height: 46px; border: 1.5px solid var(--rouge); border-radius: 3px; background: #fff; overflow: hidden; }
-  .jauge.pleine { background: #fbe9ec; }
-  .seg { position: absolute; top: 0; bottom: 0; background: #c4c4c9; border-right: 1px solid #fff; transition: left 0.2s, width 0.2s; }
-  .seg.alt { background: #a9a9af; }
-  .un-seul { font-size: 12px; color: var(--gris); margin: 5px 0 0; }
-  .message { min-height: 1.4em; font-size: 14px; margin: 10px 0; }
-  .message.fin { font-family: 'Sanomat', Georgia, serif; font-weight: 700; font-size: 16px; color: var(--rouge); }
-  .outils { display: flex; flex-wrap: wrap; gap: 8px; }
-  .outils input { flex: 1 1 180px; min-width: 0; font: inherit; font-size: 16px; padding: 7px 10px; border: 1px solid var(--filet); border-radius: 3px; }
-  .outils button { border: 1px solid var(--encre); background: var(--encre); color: #fff; border-radius: 3px; padding: 7px 12px; font-size: 13.5px; font-weight: 500; }
-  .outils button.sobre { background: #fff; color: var(--encre); border-color: var(--filet); }
-  .outils button:disabled { opacity: 0.35; cursor: default; }
-  .legende { font-size: 11.5px; color: var(--gris); margin: 8px 0 6px; }
-  .puces { display: flex; flex-wrap: wrap; gap: 5px; max-height: 300px; overflow-y: auto; padding: 2px; border-top: 1px solid var(--filet); border-bottom: 1px solid var(--filet); padding-block: 8px; }
-  .puce { display: inline-flex; gap: 6px; align-items: baseline; border: 1px solid var(--filet); background: #f6f6f7; border-radius: 3px; padding: 4px 8px; font-size: 12.5px; line-height: 1.2; }
-  .puce .val { color: var(--gris); font-size: 11.5px; }
-  .puce:hover { border-color: var(--encre); }
-  .puce.pris { background: var(--rouge); border-color: var(--rouge); color: #fff; }
-  .puce.pris .val { color: #fde3e7; }
-  .puce.trop { opacity: 0.38; }
-  .puce.secoue { animation: secoue 0.35s; }
-  @keyframes secoue { 20%, 60% { transform: translateX(-3px); } 40%, 80% { transform: translateX(3px); } }
-  .vide { font-size: 13px; color: var(--gris); margin: 6px 2px; }
-  .source { border-top: 1px solid var(--filet); margin-top: 12px; padding-top: 7px; font-size: 11.5px; color: var(--gris); line-height: 1.4; }
-  button:focus-visible, input:focus-visible { outline: 2px solid var(--rouge); outline-offset: 1px; }
+  .score { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 26px; }
+  .n { font-family: 'Sanomat', Georgia, serif; font-weight: 700; font-size: 32px; line-height: 1; color: var(--encre); white-space: nowrap; min-width: 4.2ch; }
+  .n.ok { color: var(--rouge); }
+  .n.ko { color: #8f0f24; }
+  .detail { font-size: 13.5px; color: var(--gris); }
+  .detail b { color: var(--encre); font-weight: 600; }
+  .jauge { position: relative; height: 54px; background: #f3f3f4; border-radius: 2px; }
+  .remplie { position: absolute; inset: 0; overflow: hidden; border-radius: 2px; }
+  .seg { position: absolute; top: 0; bottom: 0; background: #c4c4c9; box-shadow: inset -1px 0 0 #fff; }
+  .seg.alt { background: #adadb3; }
+  .seg.depasse { background: repeating-linear-gradient(45deg, #dd203c 0 2px, #f7c9d1 2px 5px); }
+  .cible { position: absolute; top: -18px; bottom: -6px; border-left: 2px solid var(--rouge); }
+  .cible span { position: absolute; top: 0; right: 5px; white-space: nowrap; font-size: 11.5px; font-weight: 600; color: var(--rouge); line-height: 1; }
+  .curseur { display: block; margin-top: 14px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  input[type='range'] { width: 100%; height: 28px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+  input[type='range']::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--encre) var(--p), #dcdcdc var(--p)); }
+  input[type='range']::-moz-range-track { height: 4px; border-radius: 2px; background: #dcdcdc; }
+  input[type='range']::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--encre); }
+  input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; margin-top: -10px; border-radius: 50%; background: var(--rouge); border: 3px solid #fff; box-shadow: 0 0 0 1px var(--rouge), 0 1px 4px rgba(0, 0, 0, 0.2); }
+  input[type='range']::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--rouge); border: 3px solid #fff; box-shadow: 0 0 0 1px var(--rouge); }
+  input[type='range']:focus-visible { outline: 2px solid var(--rouge); outline-offset: 2px; }
+  .bornes { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--gris); margin-top: 2px; }
+  .message { font-size: 15px; margin: 12px 0 2px; min-height: 1.4em; }
+  .message.juste { font-family: 'Sanomat', Georgia, serif; font-weight: 700; font-size: 17px; color: var(--rouge); }
+  .message.trop { color: #8f0f24; }
+  .dernier { font-size: 13px; color: var(--gris); margin: 0 0 12px; }
+  .actions button { border: 1px solid var(--encre); background: var(--encre); color: #fff; border-radius: 3px; padding: 8px 14px; font-size: 13.5px; font-weight: 500; min-height: 40px; }
+  .actions button:disabled { opacity: 0.3; cursor: default; }
+  .liste { font-size: 12px; line-height: 1.5; color: var(--gris); margin: 14px 0 0; max-height: 6em; overflow-y: auto; }
+  .liste span { color: var(--encre); font-weight: 600; }
+  .source { border-top: 1px solid var(--filet); margin-top: 14px; padding-top: 7px; font-size: 11.5px; color: var(--gris); line-height: 1.4; }
+  button:focus-visible { outline: 2px solid var(--rouge); outline-offset: 1px; }
   @media (max-width: 600px) {
     .cibles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .puces { max-height: 260px; }
+    .n { font-size: 28px; }
   }
-  @media (prefers-reduced-motion: reduce) { .seg { transition: none; } .puce.secoue { animation: none; } }
 </style>
